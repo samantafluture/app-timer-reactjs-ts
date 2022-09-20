@@ -21,6 +21,7 @@ export function History() {
             </tr>
           </thead>
           <tbody>
+            cycles ?{' '}
             {cycles.map((cycle) => {
               return (
                 <tr key={cycle.id}>
@@ -45,6 +46,7 @@ export function History() {
                 </tr>
               )
             })}
+            : <div>No cycles</div>
           </tbody>
         </table>
       </HistoryList>
