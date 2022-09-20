@@ -24,7 +24,7 @@ export function cyclesReducer(state: CyclesState, action: any) {
         draft.activeCycleId = action.payload.newCycle.id
       })
     case ActionTypes.INTERRUPT_CURRENT_CYCLE: {
-      const currentCycleIndex = state.cycles.findIndex(
+      const currentCycleIndex = state.cycles?.findIndex(
         (cycle: { id: string | null }) => {
           return cycle.id === state.activeCycleId
         },
@@ -40,7 +40,7 @@ export function cyclesReducer(state: CyclesState, action: any) {
       })
     }
     case ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED: {
-      const currentCycleIndex = state.cycles.findIndex(
+      const currentCycleIndex = state.cycles?.findIndex(
         (cycle: { id: string | null }) => {
           return cycle.id === state.activeCycleId
         },
