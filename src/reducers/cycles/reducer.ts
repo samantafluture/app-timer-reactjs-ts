@@ -12,7 +12,7 @@ export interface Cycle {
 }
 
 interface CyclesState {
-  cycles: Cycle[] | any
+  cycles: Cycle[]
   activeCycleId: string | null
 }
 

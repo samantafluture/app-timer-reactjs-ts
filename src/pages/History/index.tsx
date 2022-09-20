@@ -5,6 +5,9 @@ import { HistoryContainer, HistoryList, Status } from './styles'
 
 export function History() {
   const { cycles } = useContext(CyclesContext)
+  if (!cycles) {
+    return null
+  }
 
   return (
     <HistoryContainer>
