@@ -12,7 +12,7 @@ export interface Cycle {
 }
 
 interface CyclesState {
-  cycles: Cycle[]
+  cycles: Cycle[] | any
   activeCycleId: string | null
 }
 
@@ -24,9 +24,11 @@ export function cyclesReducer(state: CyclesState, action: any) {
         draft.activeCycleId = action.payload.newCycle.id
       })
     case ActionTypes.INTERRUPT_CURRENT_CYCLE: {
-      const currentCycleIndex = state.cycles.findIndex((cycle) => {
-        return cycle.id === state.activeCycleId
-      })
+      const currentCycleIndex = state.cycles.findIndex(
+        (cycle: { id: string | null }) => {
+          return cycle.id === state.activeCycleId
+        },
+      )
 
       if (currentCycleIndex < 0) {
         return state
@@ -38,9 +40,11 @@ export function cyclesReducer(state: CyclesState, action: any) {
       })
     }
     case ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED: {
-      const currentCycleIndex = state.cycles.findIndex((cycle) => {
-        return cycle.id === state.activeCycleId
-      })
+      const currentCycleIndex = state.cycles.findIndex(
+        (cycle: { id: string | null }) => {
+          return cycle.id === state.activeCycleId
+        },
+      )
 
       if (currentCycleIndex < 0) {
         return state
